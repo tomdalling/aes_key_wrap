@@ -1,3 +1,5 @@
+![build status](https://travis-ci.org/tomdalling/aes_key_wrap.svg)
+
 # AESKeyWrap
 
 A Ruby implementation of AES Key Wrap, a.k.a RFC 3394, a.k.a NIST Key Wrap.
