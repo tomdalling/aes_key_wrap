@@ -1,3 +1,5 @@
+require 'openssl'
+
 ##
 # A Ruby implementation of AES Key Wrap, a.k.a RFC 3394, a.k.a NIST Key Wrapping
 #
