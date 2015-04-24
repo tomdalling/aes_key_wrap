@@ -25,7 +25,7 @@ unwrapped = AESKeyWrap.unwrap(wrapped_key, kek, iv)
 ```
 
 There also `unwrap!`, which throws an exception if unwrapping
-fails, instead of returning nil:
+fails, instead of returning nil.
 
 ## Contributing
 
