@@ -1,4 +1,5 @@
 [![Build Status](https://travis-ci.org/tomdalling/aes_key_wrap.svg?branch=master)](https://travis-ci.org/tomdalling/aes_key_wrap)
+[![Test Coverage](https://codeclimate.com/github/tomdalling/aes_key_wrap/badges/coverage.svg)](https://codeclimate.com/github/tomdalling/aes_key_wrap)
 
 # AESKeyWrap 
 
