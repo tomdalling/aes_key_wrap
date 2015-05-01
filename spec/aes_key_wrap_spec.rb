@@ -1,4 +1,4 @@
-require 'aes_key_wrap'
+require 'spec_helper'
 
 RSpec.describe AESKeyWrap do
   # test data is taken from: http://www.ietf.org/rfc/rfc3394.txt
