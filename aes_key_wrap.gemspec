@@ -17,7 +17,7 @@ Gem::Specification.new do |spec|
   spec.require_paths = ['lib']
 
   spec.add_development_dependency 'rake', '>= 12.3.3'
-  spec.add_development_dependency 'rspec', '~> 3.2'
+  spec.add_development_dependency 'test_bench', '~> 1.0'
 
   # code climate doesn't support v0.18+
   # see: https://github.com/codeclimate/test-reporter/issues/413
