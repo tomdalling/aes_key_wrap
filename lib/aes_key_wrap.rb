@@ -20,7 +20,9 @@ module AESKeyWrap
     #
     # @param unwrapped_key [String] The plaintext key to be wrapped, as a binary string
     # @param kek [String] The key-encrypting key, as a binary_string
-    # @param iv [Integer] The "initial value", as unsigned 64bit integer
+    # @param iv [Integer, String] The "initial value", as either an unsigned
+    #   64-bit integer (e.g. `0xDEADBEEFC0FFEEEE`) or an 8-byte string (e.g.
+    #   `"\xDE\xAD\xBE\xEF\xC0\xFF\xEE\xEE"`).
     # @return [String] The wrapped key, as a binary string
     #
     def wrap(unwrapped_key, kek, iv=DEFAULT_IV)
@@ -63,10 +65,12 @@ module AESKeyWrap
     #
     # @param wrapped_key [String] The wrapped key (cyphertext), as a binary string
     # @param kek [String] The key-encrypting key, as a binary string
-    # @param expected_iv [Integer] The IV used to wrap the key, as an unsigned 64bit integer
+    # @param expected_iv [Integer, String] The IV used to wrap the key, as either
+    #   an unsigned 64-bit integer (e.g. `0xDEADBEEFC0FFEEEE`) or an 8-byte
+    #   string (e.g. `"\xDE\xAD\xBE\xEF\xC0\xFF\xEE\xEE"`).
     # @return [String] The unwrapped (plaintext) key as a binary string, or
-    #                  `nil` if unwrapping failed due to `expected_iv` not matching the
-    #                  decrypted IV
+    #   `nil` if unwrapping failed due to `expected_iv` not matching the
+    #   decrypted IV
     #
     # @see #unwrap!
     #
