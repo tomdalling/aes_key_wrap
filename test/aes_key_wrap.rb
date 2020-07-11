@@ -113,4 +113,45 @@ TestBench.context AESKeyWrap do
     end
   end
 
+  context "IVs" do
+    wrap_using_iv = ->(iv) { AESKeyWrap.wrap("!"*16, "?"*16, iv) }
+
+    test "can be 64-bit unsigned integers" do
+      refute_raises { wrap_using_iv.(0xDEADBEEFC0FFEEEE) }
+    end
+
+    test "can be 8-byte strings" do
+      refute_raises { wrap_using_iv.("\xDE\xAD\xBE\xEF\xC0\xFF\xEE\xEE") }
+    end
+
+    test "are equivalent, regardless of type" do
+      i64 = wrap_using_iv.(0xDEADBEEFC0FFEEEE)
+      str = wrap_using_iv.("\xDE\xAD\xBE\xEF\xC0\xFF\xEE\xEE")
+      assert(i64 == str)
+    end
+
+    test "can not be larger integers" do
+      assert_raises(ArgumentError, 'IV is too large to fit in a 64-bit unsigned integer') do
+        wrap_using_iv.(0x10000000000000000)
+      end
+    end
+
+    test "can not be negative integers" do
+      assert_raises(ArgumentError, "IV is not an unsigned integer (it's negative)") do
+        wrap_using_iv.(-1)
+      end
+    end
+
+    test "can not be strings of any other length" do
+      assert_raises(ArgumentError, "IV is not 8 bytes long") do
+        wrap_using_iv.('hello')
+      end
+    end
+
+    test "can not be any other type of value" do
+      assert_raises(ArgumentError, "IV is not valid: :elmo") do
+        wrap_using_iv.(:elmo)
+      end
+    end
+  end
 end
