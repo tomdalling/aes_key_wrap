@@ -5,6 +5,7 @@ language: ruby
 rvm:
   - 2.5.8
   - 2.6.6
+  - truffleruby-head
 
 # run latest ruby differently (run codeclimate)
 matrix:
