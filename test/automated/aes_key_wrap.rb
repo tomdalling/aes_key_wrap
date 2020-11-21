@@ -1,4 +1,4 @@
-require_relative 'test_init'
+require_relative '../test_init'
 
 TestBench.context AESKeyWrap do
 
@@ -103,7 +103,8 @@ TestBench.context AESKeyWrap do
     wrapped = AESKeyWrap.wrap(dummy_arg, dummy_arg, 1234)
 
     test 'has the same return value on success' do
-      AESKeyWrap.unwrap!(wrapped, dummy_arg, 1234)
+      unwrapped = AESKeyWrap.unwrap!(wrapped, dummy_arg, 1234)
+      assert(unwrapped == dummy_arg)
     end
 
     test 'raises an exception on failure, instead of returning nil' do
